@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.container > .left,
+.container > .right {
+  flex: 24;
+}
+
+.container > .mid {
+  flex: 34;
+}
+
+.left {
+  padding-left: 10px;
+  padding-right: 2px;
+  background-color: #ffffff80;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.left > img {
+  margin-top: 44px;
+  /* margin-left: 96px; */
+  margin-bottom: 1px;
+}
+
+.left .formborder {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 40px 0 30px;
+}
+
+.search-container {
+  position: relative;
+}
+.search-input {
+  direction: rtl;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  width: 20px;
+  left: 10px;
+  top: 45%;
+  z-index: 8888;
+  transform: translateY(-50%);
+}
+
+/* date start  */
+.date-container {
+  position: relative;
+}
+.titlelistContainer {
+  position: relative;
+}
+.textbox-n,
+.titlelist {
+  width: 100%;
+}
+
+.date-icon {
+  padding-left: 10px;
+  position: absolute;
+  top: 25%;
+  right: 20px;
+  border-left: 2px solid rgb(28, 28, 29, 0.6);
+}
+
+.left input {
+  padding: 8px 10px 8px 30px;
+  border-radius: 5px;
+  border: 1px solid #8c8c8c;
+  background: #d9d9d9;
+  height: 40px;
+  margin-bottom: 13px;
+}
+
+.left ol {
+  padding-left: 30px;
+  margin-top: 35px;
+  margin-bottom: 420px;
+}
+
+.left ol li {
+  margin-top: 15px;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 300px;
+}
+
+.left > p {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  background: #36398e;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  
+  opacity: 0;
+  -webkit-appearance: none;
+} */
+
+/* left side done  */
+.container > .mid {
+  padding: 20px;
+  position: relative;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container > .mid > img {
+  width: 90%;
+  /* height: 0%; */
+}
+.mid > p {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3px;
+  background: #00bc56;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* mid complete  */
+.right {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.location {
+  border-radius: 7px;
+  background: #36398e;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 16px;
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  /* position: relative; */
+}
+
+.location .line {
+  width: 1px;
+  height: 59.656px;
+  background-color: white;
+  margin: auto 0;
+}
+
+.location p span {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.location p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.project {
+  background: #009f3c;
+}

@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+.container {
+  padding: 14px 60px 20px 190px;
+}
+
+.name_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+}
+.name_btn > p {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bothbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.add-btn{
+  text-decoration: none;
+}
+
+
+.filterbtn,
+.addnew {
+  border-radius: 10px;
+  background: #009f3c;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 10px 50px;
+}
+
+.white-image {
+  filter: brightness(0) invert(1) sepia(0) saturate(10000%) hue-rotate(0deg);
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  margin-top: 2px;
+}
+.addnew {
+  background-color: #36398e;
+}
+
+/* table start here  */
+.databox {
+  margin-top: 20px;
+  border-radius: 15px;
+  background: #ececec;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px; /* Optional: Add some spacing between the table and other elements */
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th:first-child,
+td:first-child {
+  width: 30%; /* Adjust the width of the first column as needed */
+}
+
+.actionflex {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  /* padding-top: 5px; */
+}

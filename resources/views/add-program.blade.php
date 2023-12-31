@@ -1,5 +1,227 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syngenta Title Submit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Jost:wght@400;700&family=Poppins:wght@400;500;700&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{asset('admin')}}/css/syngentaformwithoutvalue.css" />
+  {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+      #container{
+        background-image: url({{asset('admin')}}/asset/img/leaf.png);
+        background-repeat: no-repeat;
+
+        background-position-x: -200px;
+        background-position-y: bottom;
+        /* background-position: left bottom; */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container1" id="container">
+      <div class="heading">
+        <a href="{{route('home')}}">
+          <img src="{{asset('admin')}}/asset/img/Syngenta_Logo 1.png" alt="" />
+        </a>
+      </div>
+      @if (session('success'))
+        <div role="alert" class="alert alert-success my-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span> {{session('success')}} </span>
+        </div>
+      @endif
+      
+      {{-- divider --}}
+      <div class="flex gap-3 md:flex-col">
+        <div class="titlebox">
+          <div class="titlediv">
+
+
+            <form action="{{route('store-program')}}" method="POST">
+              @csrf
+
+            <div class="programtitle">
+              <p>Program Title</p>
+              <input type="text" name="program_title" id="title" required/>
+            </div>
+            {{-- <div class="custom-select dropdown">
+              <select class="dropbtn">
+                <option value="dhaka">Dhaka</option>
+                <option value="khulna">Khulna</option>
+                <option value="dinajpur">Dinajpur</option>
+                <option value="panchagar">Panchagar</option>
+              </select>
+            </div> --}}
+          </div>
+          <div class="informationfullbox">
+            <div class="informationbox">
+              <div class="info">
+                <div class="infotitle">
+                  <p>Out Reach</p>
+                  <input type="text" class="outreach" name="outreach" required/>
+                </div>
+                <div class="infotitle">
+                  <p>Quantity</p>
+                  <input type="text" name="quantity" required/>
+                </div>
+              </div>
+              <div class="infoform">
+                
+                  <!-- <div class="dropdown">
+                  <button class="dropbtn">Districts</button>
+                  <div class="dropdown-content">
+                    <a href="#">Dhaka</a>
+                    <a href="#">Dinajpur</a>
+                    <a href="#">Rangpur</a>
+                    <a href="#">Panchagar</a>
+                  </div>
+              </div> -->
+                  <div class="flex justify-between gap-4">
+                    <div class="custom-select dropdown">
+                      <select name="district" class="dropbtn" id="districts">
+                        <option selected disabled>Select District</option>
+                        @foreach ($districts as $item)
+                          <option value="{{$item->name}}">{{$item->name}}</option>
+                        @endforeach
+                        
+                      </select>
+                    </div>
+                    <input class="rounded-lg px-4 py-2" type="date" id="date"/>
+                    {{-- button --}}
+                    <div class="bg-green-600 flex justify-center items-center px-3 rounded-lg cursor-pointer"  id="information_btn">ADD +</div>
+                  </div>
+                
+                <div class="databox">
+                  <table id="district_time_table">
+                      
+                  </table>
+                </div>
+              </div>
+            </div>
+            <input type="text" name="location_date" class="hidden" id="location_date">
+            <div class="bothbtn">
+              <button type="submit" class="filterbtn bg-green-600">Submit</button>
+            </div>
+          </form>
+          </div>
+        </div>
+
+        {{-- ============ right side program add form ===========  --}}
+        {{-- <div class="px-10 py-10 bg-[#ececec] rounded-lg">
+          <h1 class="text-center text-2xl font-bold my-4">Add New Program</h1>
+          <form action="" method="POST">
+            @csrf
+
+            <div class="programtitle">
+              <p>Program Title</p>
+              <input type="text" name="program_name" id="title" />
+            </div>
+            <div class="bothbtn">
+              <button type="submit" class="filterbtn text-lg  bg-green-600">ADD Program</button>
+            </div>
+          </form>
+
+
+        </div> --}}
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+      let dataArray = [];
+      // console.dir(districts);
+      const informationBtn = document.getElementById('information_btn')
+      const locationDate = document.getElementById('location_date');
+
+      informationBtn.addEventListener("click", handleSubmit);
+
+      function handleSubmit(){
+
+        const district = document.getElementById('districts').value;
+        const date = document.getElementById('date').value;
+
+        if (district.trim() !== '' && date.trim() !== '') {
+            const newData = { district: district, date: date };
+            dataArray.push(newData);
+            updateDom(dataArray);
+
+            console.log(dataArray); // Log the updated array of objects
+        } else {
+            alert('Please enter both district and date.');
+        }
+
+      }
+
+      function updateDom(data){
+        const dataTable = document.getElementById('district_time_table');
+        dataTable.innerText = '';
+        for(item of data){
+          let newItem = document.createElement("tr");
+          newItem.innerHTML = `
+              <th>${item.district}</th>
+              <th>${item.date}</th>
+              <th></th>
+          `;
+          dataTable.appendChild(newItem);
+          stringifyDate = JSON.stringify(data)
+          locationDate.value = stringifyDate;
+          
+          // dataTable.appendChild(datalist);
+          console.log(item.district);
+        }
+        
+      }
+
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,4 +385,4 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/datepicker.min.js"></script> 
 </body>
-</html>
+</html> --}}

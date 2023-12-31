@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.container1 {
+  padding: 50px 160px 60px 190px;
+}
+
+.heading {
+  margin-left: 25px;
+}
+
+.titlebox {
+  padding: 25px;
+  border-radius: 15px;
+  background: #ececec;
+}
+
+.programtitle p {
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+.programtitle > input {
+  border-radius: 10px;
+  background: #d9d9d9;
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 15px 20px;
+  border: none;
+}
+
+.informationbox {
+  display: flex;
+  gap: 55px;
+  margin-top: 25px;
+}
+
+/* left side of info box  */
+.info {
+  flex: 1;
+}
+
+.infotitle p {
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: normal;
+}
+
+.infotitle input {
+  width: 100%;
+  border-radius: 10px;
+  background: #d9d9d9;
+  border: none;
+  font-size: 20px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+/* right side of info box  */
+.infoform {
+  border-radius: 10px;
+  background: #d9d9d9;
+  padding: 25px;
+  flex: 2;
+}
+
+.infoform form {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  flex: 1;
+  width: 100%;
+}
+
+.dropbtn {
+  width: 100%;
+  border-radius: 10px;
+  background: #f4f4f4;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+select > option:hover {
+  border-radius: 4px;
+  border-radius: 15px;
+  background-color: red;
+}
+
+/* .dropbtn option {
+  background-color: rgb(97, 189, 97); */
+/* } */
+/* .dropdown:hover .dropbtn {
+  background-color: #ececec;
+} */
+
+form input[type="date"] {
+  flex: 1;
+  width: 100%;
+  border-radius: 10px;
+  background: #f4f4f4;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+form > button {
+  flex: 0.5;
+  width: 100%;
+  border-radius: 10px;
+  background: #f4f4f4;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bolder;
+  line-height: normal;
+}
+
+/* table style  */
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+tr {
+  width: 100%;
+  display: flex;
+  /* justify-content: flex-start; */
+  border-bottom: 1px solid black;
+  padding: 5px 0 5px 20px;
+}
+
+th {
+  flex: 1;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+}
+
+.bothbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.filterbtn,
+.cancel {
+  border-radius: 15px;
+  background: #009f3c;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 10px 50px;
+  border: none;
+}
+.cancel {
+  background: #8c8c8c;
+}

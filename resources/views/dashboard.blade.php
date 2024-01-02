@@ -47,7 +47,7 @@
 
       <div class="right">
         <div
-          class="bg-indigo-900 flex max-w-[355px] items-start justify-between gap-4 pl-7 pr-3 py-5 rounded-lg"
+          class="bg-indigo-900 flex  items-start justify-between gap-4 pl-7 pr-3 py-5 rounded-lg"
         >
           <div class="flex grow basis-[0%] flex-col items-stretch self-start">
             <div class="text-white text-2xl font-bold whitespace-nowrap">District</div>
@@ -75,7 +75,7 @@
 
         <div class="flex max-w-[409px] flex-col items-center mt-4">
           <div
-            class="bg-green-600 z-[1] flex w-[355px] max-w-full items-stretch justify-between gap-5 pl-7 pr-12 py-4 rounded-lg"
+            class="bg-green-600 z-[1] flex  max-w-full items-stretch justify-between gap-5 pl-7 pr-12 py-4 rounded-lg"
           >
             <div class="flex flex-col items-stretch">
               <div class="text-white text-2xl font-bold leading-7">
@@ -112,12 +112,7 @@
         console.log(name);
       }
 
-function showMapData(district){
-
-
-
-
-}
+      let svg; // Declare svg globally
 
 const drawMap = async () => {
     const mapLink = 'districts.geojson'
@@ -125,10 +120,10 @@ const drawMap = async () => {
         const response = await fetch(mapLink);
         const data = await response.json();
         console.log(data.features);
-        const svg = d3.select('#map')
-            .append('svg')
-            .attr('width', 500)
-            .attr('height', 700);
+        svg = d3.select('#map')
+          .append('svg')
+          .attr('width', 500)
+          .attr('height', 700);
 
         const projection = d3.geoMercator()
             .center([90.3563, 23.685])
@@ -166,7 +161,7 @@ const drawMap = async () => {
 
                 const districtName = d.target.__data__.properties.ADM2_EN;
                 printDistrictName(districtName);
-                const loremIpsumData = `Our Meeting will held on ${districtName}`; // Replace this with your data
+                
 
                 d3.select('#infoSideBar')
                     .html(showMapData(districtName));
@@ -232,7 +227,9 @@ drawMap();
             .then(data => {
                 printDistrict(data.location_date);
                 printDate(data.location_date);
+                highlightDistricts(data.location_date);
                 printOutreachAndQuantity(data.program);
+                
                 console.log(data);
                 
             })
@@ -278,6 +275,20 @@ drawMap();
         quantity.innerText = item.quantity;
       })
 
+    }
+
+    // Function to change district color based on the provided data
+    function highlightDistricts(districtData) {
+        if (svg) {
+            svg.selectAll('.district')
+                .style('fill', d => {
+                    const districtName = d.properties.ADM2_EN;
+                    const foundDistrict = districtData.find(item => item.district === districtName);
+                    return foundDistrict ? 'red' : 'green';
+                });
+        } else {
+            console.error('SVG not initialized');
+        }
     }
     </script>
   </body>

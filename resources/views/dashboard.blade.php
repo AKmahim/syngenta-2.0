@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,9 +11,15 @@
     />
     <title>syngentaMap</title>
     <link rel="stylesheet" href="{{asset('admin')}}/css/syngentaMap.css" />
+
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+
   </head>
   <body>
-    <div class="container">
+    <div class="container1">
       <div class="left">
         <a href="{{route('home')}}">
             <img src="{{asset('admin')}}/asset/img/Syngenta_Logo 1.png" alt="" />
@@ -21,11 +27,15 @@
         <div class="formborder">
 
 
-          <input type="date" placeholder="Date" />
-          <ol>
-            <li>Lead Farmers Training on Stewardship</li>
-            <li>Professional Spray men Training</li>
-            <li>Application Technology Training for SYT Sales Staff</li>
+          <form action="">
+            <input type="date" placeholder="Date" required/>
+            <button type="submit" class="btn bg-green-600 ">Filter</button>
+          </form>
+
+          <ol type="1" class="list-disc">
+            @foreach ($program as $item)
+                <li class="cursor-pointer program hover:text-green-500" >{{$item->program_title}}</li>
+            @endforeach
           </ol>
         </div>
         <p></p>
@@ -36,15 +46,57 @@
       </div>
 
       <div class="right">
-        <div class="location">
-          <p>Location <span>Munshigonj</span></p>
-          <p class="line"></p>
-          <p>Quality <span>26</span></p>
+        <div
+          class="bg-indigo-900 flex max-w-[355px] items-start justify-between gap-4 pl-7 pr-3 py-5 rounded-lg"
+        >
+          <div class="flex grow basis-[0%] flex-col items-stretch self-start">
+            <div class="text-white text-2xl font-bold whitespace-nowrap">District</div>
+            <div id="district">
+              
+            </div>
+          </div>
+          <div class="bg-white self-center w-px shrink-0 h-[140px] my-auto"></div>
+          <div class="flex grow basis-[0%] flex-col items-stretch self-start">
+            <div class="text-white text-2xl font-bold whitespace-nowrap">Date</div>
+            {{-- ================ program date =========== --}}
+            <div id="program_date">
+
+            </div>
+           
+          </div>
+          <div
+            class="bg-zinc-800 flex basis-[0%] flex-col items-stretch mt-5 pb-12 rounded-md self-start"
+          >
+            <div class="bg-white flex shrink-0 h-[84px] flex-col rounded-md"></div>
+          </div>
         </div>
-        <div class="location project">
-          <p>Location <span>Munshigonj</span></p>
+
+        {{-- ============= bottom part ========================  --}}
+
+        <div class="flex max-w-[409px] flex-col items-center mt-4">
+          <div
+            class="bg-green-600 z-[1] flex w-[355px] max-w-full items-stretch justify-between gap-5 pl-7 pr-12 py-4 rounded-lg"
+          >
+            <div class="flex flex-col items-stretch">
+              <div class="text-white text-2xl font-bold leading-7">
+                Projected Out Reach
+              </div>
+              <div class="text-white text-xl mt-6" id="outreach"></div>
+            </div>
+            <div class="flex flex-col items-stretch">
+              <div class="text-white text-2xl font-bold whitespace-nowrap">
+                Quantity
+              </div>
+              <div class="text-white text-xl whitespace-nowrap mt-11" id="quantity"></div>
+            </div>
+          </div>
+          <img
+            loading="lazy"
+            srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/195b00528ff12a55d847776f80d6c9f572a0f730c9da4488d127836249d0dc1c?apiKey=5bc6e68df7c1430790d62476ac934cef&"
+            class="aspect-[0.96] object-contain object-center w-full overflow-hidden self-stretch"
+          />
         </div>
-        <img src="./assets/techtree-02 1.png" alt="">
+        
       </div>
     </div>
 
@@ -61,103 +113,10 @@
       }
 
 function showMapData(district){
-    const n1  = Math.floor(Math.random() * 100);
-    const n2 = Math.floor(Math.random() * 100);
-    const n3 = Math.floor(Math.random() * 100);
-    const n4 = Math.floor(Math.random() * 100);
-    const n5 = Math.floor(Math.random() * 100);
-    const n6 = Math.floor(Math.random() * 100);
-    const n7 = Math.floor(Math.random() * 100);
-    const n8 = Math.floor(Math.random() * 100);
-    const n9 = Math.floor(Math.random() * 100);
-    const n10 = Math.floor(Math.random() * 100);
 
 
 
-    const mapData = `
-    <div class="bg-[#fff] h-[800px] px-4 w-96 py-4 rounded-lg overflow-y-auto">
-                <h1 class="text-[40px] font-bold text-center mb-4" id="sidebar">${district}</h1>
-                <!-- spray infomation box -->
-                <div class="bg-[#001586] p-1 rounded-lg text-white mb-4">
-                    <h1 class="text-[23px] font-medium text-center mb-2">Professional Spray Men Training</h1>
-                    <div class="flex justify-between pb-4">
-                        <div class="ps-4">
-                            <h3 class="text-[30px] font-bold text-center">${n1}</h3>
-                            <p class="text-[23px] font-medium text-center">Quantity</p>
-                        </div>
-                        <div class="border-solid border-e-2 border-[#DF3030]"></div>
-                        <div class="pe-2">
-                            <h3 class="text-[30px] font-bold text-center">${n2}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- spray infomation box -->
-                <div class="bg-[#06C246] p-1 rounded-lg text-white mb-4">
-                    <h1 class="text-[23px] font-medium text-center mb-2">Lead Farmers Training on Stewardship</h1>
-                    <div class="flex justify-between pb-4">
-                        <div class="ps-4">
-                            <h3 class="text-[30px] font-bold text-center">${n3}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                        <div class="border-solid border-e-2 border-[#DF3030]"></div>
-                        <div class="pe-2">
-                            <h3 class="text-[30px] font-bold text-center">${n4}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- spray infomation box -->
-                <div class="bg-[#AA0505] p-1 rounded-lg text-white mb-4">
-                    <h1 class="text-[23px] font-medium text-center mb-2">Farm Family Meeting</h1>
-                    <div class="flex justify-between pb-4">
-                        <div class="ps-4">
-                            <h3 class="text-[30px] font-bold text-center">${n5}</h3>
-                            <p class="text-[23px] font-medium text-center">Quantity</p>
-                        </div>
-                        <div class="border-solid border-e-2 border-[#DF3030]"></div>
-                        <div class="pe-2">
-                            <h3 class="text-[30px] font-bold text-center">${n6}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- spray infomation box -->
-                <div class="bg-[#06C246] p-1 rounded-lg text-white mb-4">
-                    <h1 class="text-[18px] font-medium text-center mb-2">Application Technology Training for Post Graduate Student at SAU</h1>
-                    <div class="flex justify-between pb-4">
-                        <div class="ps-4">
-                            <h3 class="text-[30px] font-bold text-center">${n7}</h3>
-                            <p class="text-[23px] font-medium text-center">Quantity</p>
-                        </div>
-                        <div class="border-solid border-e-2 border-[#DF3030]"></div>
-                        <div class="pe-2">
-                            <h3 class="text-[30px] font-bold text-center">${n8}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- spray infomation box -->
-                <div class="bg-[#001586] p-1 rounded-lg text-white ">
-                    <h1 class="text-[18px] font-medium text-center mb-2">Application Technology Training for SYT Sales Staff</h1>
-                    <div class="flex justify-between pb-4">
-                        <div class="ps-4">
-                            <h3 class="text-[30px] font-bold text-center">${n9}</h3>
-                            <p class="text-[23px] font-medium text-center">Quantity</p>
-                        </div>
-                        <div class="border-solid border-e-2 border-[#DF3030]"></div>
-                        <div class="pe-2">
-                            <h3 class="text-[30px] font-bold text-center">${n10}</h3>
-                            <p class="text-[23px] font-medium text-center">Outreach</p>
-                        </div>
-                    </div>
-                </div>
-
-
-             </div>
-    `
-    return mapData;
 }
 
 const drawMap = async () => {
@@ -242,9 +201,84 @@ const drawMap = async () => {
 drawMap();
 
 
+    const programs = document.querySelectorAll('.program');
+    // Function to log the value when a list item is clicked
+    const handleClick = (event) => {
+        console.log(event.target.textContent);
+        const title = event.target.textContent;
+        filterByTitle(title);
+    };
+
+    // Add click event listeners to each "program" list element
+    programs.forEach((element) => {
+        element.addEventListener('click', handleClick);
+    });
+
+    //filter by title function
+    function filterByTitle(title){
+      const url = `/admin/filter-by-title/${title}`;
+      fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                printDistrict(data.location_date);
+                printDate(data.location_date);
+                printOutreachAndQuantity(data.program);
+                console.log(data);
+                
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
 
+    //print district and date in dom
+    function printDistrict(data){
+      const districtDiv = document.getElementById('district');
+      districtDiv.innerHTML = '';
+      data.forEach((item)=>{
+        const div = document.createElement('div');
+        div.classList.add('text-white','text-xl','whitespace-nowrap','mt-5');
+        div.innerText = item.district;
+        districtDiv.appendChild(div);
+      })
+      
+      
+    }
 
+    function printDate(data){
+      const dateDiv = document.getElementById('program_date');
+      dateDiv.innerHTML = '';
+      data.forEach((item)=>{
+        const div = document.createElement('div');
+        div.classList.add('text-white','text-xl','mt-5');
+        div.innerText = item.date;
+        dateDiv.appendChild(div);
+      })
+    }
+
+
+    function printOutreachAndQuantity(program){
+      const outreach = document.getElementById('outreach');
+      const quantity = document.getElementById('quantity');
+      program.forEach((item)=>{
+        outreach.innerText = '';
+        outreach.innerText = item.outreach;
+        quantity.innerText = '';
+        quantity.innerText = item.quantity;
+      })
+
+    }
     </script>
   </body>
 </html>

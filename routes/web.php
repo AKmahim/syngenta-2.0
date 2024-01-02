@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-program',[AdminController::class,'AddProgram'])->name('add-program');
     Route::post('/store-program',[AdminController::class,'StoreProgram'])->name('store-program');
 
+    Route::get('/admin/filter-by-title/{title}',[AdminController::class,'FilterByTitle'])->name('filter-by-title');
+
 
 
     

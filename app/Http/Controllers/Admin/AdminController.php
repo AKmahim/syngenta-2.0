@@ -17,12 +17,15 @@ class AdminController extends Controller
 {
     //dashboard controller
     public function Dashboard(){
-        return view('dashboard');
+        $program = Programs::get();
+        // dd($program);
+        return view('dashboard',compact('program'));
     }
 
 
     //control panel
     public function ControlPanel(){
+
         return view('control-panel');
     }
 
@@ -63,6 +66,18 @@ class AdminController extends Controller
 
         return Redirect()->back()->with('success','Program Data Added');
 
+    }
+
+
+    //filter by title and return json
+    public function FilterByTitle($title){
+        $program = Programs::where('program_title',$title)->latest()->get();
+        $location_date = LocationDate::where('program_id',$program[0]->id)->get();
+        // dd($program[0]->id);
+        
+
+
+        return response()->json(['program'=>$program,'location_date'=>$location_date]);
     }
 
 }

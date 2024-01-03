@@ -35,7 +35,10 @@ Route::middleware('auth')->group(function () {
 // ================================ admin controller ========================= 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[AdminController::class,'Dashboard'])->name('dashboard');
+
     Route::get('/control-panel',[AdminController::class,'ControlPanel'])->name('control-panel');
+    Route::get('/admin/program/delete/{id}',[AdminController::class,'DeleteProgram'])->name('delete-program');
+
     Route::get('/add-program',[AdminController::class,'AddProgram'])->name('add-program');
     Route::post('/store-program',[AdminController::class,'StoreProgram'])->name('store-program');
 

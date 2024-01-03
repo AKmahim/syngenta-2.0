@@ -19,11 +19,19 @@
 
   </head>
   <body>
+    {{-- ============ nav  ======================  --}}
+    <div class="flex justify-between items-center mx-10">
+      <a  href="{{route('home')}}">
+          <img src="{{asset('admin')}}/asset/img/Syngenta_Logo 1.png" alt="" />
+      </a>
+      <div class="flex justify-between">
+        <a href="{{route('dashboard')}}" class="me-4 btn btn-success text-white hover:text-black">Dashboard</a>
+        <a href="{{route('control-panel')}}" class="me-4 btn btn-success text-white hover:text-black">Control Panel</a>
+      </div>
+    </div>
     <div class="container1">
       <div class="left">
-        <a href="{{route('home')}}">
-            <img src="{{asset('admin')}}/asset/img/Syngenta_Logo 1.png" alt="" />
-        </a>
+        
         <div class="formborder">
 
 

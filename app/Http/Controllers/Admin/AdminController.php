@@ -25,9 +25,12 @@ class AdminController extends Controller
 
     //control panel
     public function ControlPanel(){
+        $program = Programs::latest()->get();
 
-        return view('control-panel');
+        return view('control-panel',compact('program'));
     }
+
+    
 
     //add new program 
     public function AddProgram(){
@@ -66,6 +69,16 @@ class AdminController extends Controller
 
         return Redirect()->back()->with('success','Program Data Added');
 
+    }
+
+
+    //delete program
+    public function DeleteProgram($id){
+        Programs::where('id',$id)->delete();
+        //delete all date and location details of this $id and free
+        LocationDate::whereIn('program_id', explode(",",$id)  )->delete();
+        
+        return Redirect()->back()->with('success','Program Deleted');
     }
 
 

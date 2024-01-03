@@ -30,12 +30,18 @@
 
   </head>
   <body>
-    <div class="container1" id="container">
-      <div class="heading">
-        <a href="{{route('home')}}">
+    {{-- ============ nav  ======================  --}}
+    <div class="flex justify-between items-center mx-14 mt-5">
+      <a  href="{{route('home')}}">
           <img src="{{asset('admin')}}/asset/img/Syngenta_Logo 1.png" alt="" />
-        </a>
+      </a>
+      <div class="flex justify-between">
+        <a href="{{route('dashboard')}}" class="me-4 btn btn-success text-white hover:text-black">Dashboard</a>
+        <a href="{{route('control-panel')}}" class="me-4 btn btn-success text-white hover:text-black">Control Panel</a>
       </div>
+    </div>
+    <div class="container1" id="container">
+      
       @if (session('success'))
         <div role="alert" class="alert alert-success my-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
